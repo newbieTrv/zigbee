@@ -847,6 +847,9 @@ void dev_init_before_mf_test(void)
     hardware_timer_init();
     opLightDriveInit(&vLight_pwm_init);
     app_print("light pwn init----------------");
+
+	uint8_t test_data[2] = {'h', 'L'};
+user_uart_send(UART_ID_UART0, test_data, sizeof(test_data));
     opLightSetRGBCW(0,0,0,1000,0);
     ret = opLightInit();
     if(ret!=OPRT_OK){
@@ -856,6 +859,13 @@ void dev_init_before_mf_test(void)
     load_attr_data();
 
 }
+
+static void __uart_rx_callback(uint8_t *data, uint16_t len)
+{
+  // user_uart_send(UART_ID_UART0, data, len);
+      app_print("uart rx ");
+}
+
 /**
  * @description: system start on, zigbee stack is inited completely and
  * manufactury test is ended, the uart and the timer is ok, user can
@@ -871,6 +881,8 @@ void dev_system_on_init(void)
 
 #ifdef APP_DEBUG
     user_uart_config_t *default_config = mf_test_uart_config();
+	default_config->func=__uart_rx_callback;
+
     user_uart_init(default_config);
 #endif
 

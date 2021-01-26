@@ -865,6 +865,59 @@ static void __uart_rx_callback(uint8_t *data, uint16_t len)
   // user_uart_send(UART_ID_UART0, data, len);
       app_print("uart rx ");
 }
+void __hardware_timer_func_t(TIMER_ID_T timer_id)
+{
+    static uint8_t test_times = 100;
+    
+    switch(timer_id) {
+        case V_TIMER0: { ///< 1000ms 调用一次，周期进来
+                /*
+        
+            if((--test_times) == 0) {
+                timer_hardware_stop_100us(timer_id); // /< 执行100次后关闭
+            }
+            if(timer_hardware_is_active(timer_id)) {
+                //TODO: 定时有效
+            }
+            else {
+                //TODO: 定时器无效
+            }
+            
+            //TODO:
+           
+            */
+                         app_print("timer0\r\n");
+
+                         break;
+        }
+        
+        case V_TIMER1: 
+                { 
+                        app_print("timer1\r\n");
+            break;
+        }
+                case V_TIMER2: 
+                { 
+                        app_print("timer2\r\n");
+            break;
+        }
+                case V_TIMER3: 
+                { 
+                        app_print("timer3\r\n");
+            break;
+        }
+                case V_TIMER4: 
+                { 
+                        app_print("Timer4\r\n");
+                        timer_hardware_start_with_id(V_TIMER4, 9000, HARDWARE_TIMER_AUTO_RELOAD_DISABLE, __hardware_timer_func_t);
+            break;
+        }
+
+                default:
+                app_print("timer default\r\n");
+                break;
+    }
+}
 
 /**
  * @description: system start on, zigbee stack is inited completely and
@@ -884,6 +937,20 @@ void dev_system_on_init(void)
 	default_config->func=__uart_rx_callback;
 
     user_uart_init(default_config);
+#endif
+
+#if 1
+	
+	hardware_timer_enable();
+	
+	timer_hardware_start_with_id(V_TIMER0, 11000, HARDWARE_TIMER_AUTO_RELOAD_ENABLE, __hardware_timer_func_t);
+	timer_hardware_start_with_id(V_TIMER1, 14000, HARDWARE_TIMER_AUTO_RELOAD_ENABLE, __hardware_timer_func_t);
+	timer_hardware_start_with_id(V_TIMER2, 17000, HARDWARE_TIMER_AUTO_RELOAD_ENABLE, __hardware_timer_func_t);
+	timer_hardware_start_with_id(V_TIMER3, 12000, HARDWARE_TIMER_AUTO_RELOAD_ENABLE, __hardware_timer_func_t);
+	timer_hardware_start_with_id(V_TIMER4, 9000, HARDWARE_TIMER_AUTO_RELOAD_DISABLE, __hardware_timer_func_t);
+
+	
+	
 #endif
 
     // update model id

@@ -39,8 +39,8 @@
 #define LED0_OUT                        GPIO_DOUT_HIGH
 #define LED0_DRIVER                     GPIO_LEVEL_LOW
 
-#define LED1_PORT                       PORT_A
-#define LED1_PIN                        PIN_6
+#define LED1_PORT                       PORT_C
+#define LED1_PIN                        PIN_1
 #define LED1_MODE                       GPIO_MODE_OUTPUT_PP
 #define LED1_OUT                        GPIO_DOUT_HIGH
 #define LED1_DRIVER                     GPIO_LEVEL_LOW
@@ -51,8 +51,8 @@
 #define LED2_OUT                        GPIO_DOUT_HIGH
 #define LED2_DRIVER                     GPIO_LEVEL_LOW
 
-#define LED3_PORT                       PORT_A
-#define LED3_PIN                        PIN_4
+#define LED3_PORT                       PORT_C
+#define LED3_PIN                        PIN_2
 #define LED3_MODE                       GPIO_MODE_OUTPUT_PP
 #define LED3_OUT                        GPIO_DOUT_HIGH
 #define LED3_DRIVER                     GPIO_LEVEL_LOW
@@ -73,8 +73,8 @@
 
 /* io config! */
 /* key config! */
-#define KEY0_PORT                       PORT_C
-#define KEY0_PIN                        PIN_2
+#define KEY0_PORT                       PORT_A
+#define KEY0_PIN                        PIN_4
 #define KEY0_MODE                       GPIO_MODE_INPUT_PULL
 #define KEY0_OUT                        GPIO_DOUT_HIGH
 #define KEY0_DRIVER                     GPIO_LEVEL_LOW
@@ -103,8 +103,8 @@
 #define KEY4_OUT                        GPIO_DOUT_HIGH
 #define KEY4_DRIVER                     GPIO_LEVEL_LOW
 
-#define KEY5_PORT                       PORT_C
-#define KEY5_PIN                        PIN_1
+#define KEY5_PORT                       PORT_A
+#define KEY5_PIN                        PIN_6
 #define KEY5_MODE                       GPIO_MODE_INPUT_PULL
 #define KEY5_OUT                        GPIO_DOUT_HIGH
 #define KEY5_DRIVER                     GPIO_LEVEL_LOW

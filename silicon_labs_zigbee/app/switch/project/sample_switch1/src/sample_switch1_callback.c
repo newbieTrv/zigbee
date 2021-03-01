@@ -292,6 +292,7 @@ static void __dev_key_handle(uint32_t key_id, key_st_t key_st, uint32_t push_tim
     uint8_t ep = 1;
 
 	app_print("key_id=%d",(key_id+1));
+	
     if(EP_SUMS <= key_id)
     {
         return;

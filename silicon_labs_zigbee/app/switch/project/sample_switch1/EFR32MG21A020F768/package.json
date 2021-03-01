@@ -42,8 +42,8 @@
 		  },
 			
 		  {
-			"led1_port": "PORT_A",
-			"led1_pin": "PIN_6",
+			"led1_port": "PORT_C",
+			"led1_pin": "PIN_1",
 			"led1_mode": "GPIO_MODE_OUTPUT_PP",
 			"led1_out": "GPIO_DOUT_HIGH",
 			"led1_driver": "GPIO_LEVEL_LOW"
@@ -56,8 +56,8 @@
 			"led2_driver": "GPIO_LEVEL_LOW"
 		  },
 		  {
-			"led3_port": "PORT_A",
-			"led3_pin": "PIN_4",
+			"led3_port": "PORT_C",
+			"led3_pin": "PIN_2",
 			"led3_mode": "GPIO_MODE_OUTPUT_PP",
 			"led3_out": "GPIO_DOUT_HIGH",
 			"led3_driver": "GPIO_LEVEL_LOW"
@@ -79,8 +79,8 @@
 	],
 	"key": [
 	      {
-			"key0_port": "PORT_C",
-			"key0_pin": "PIN_2",
+			"key0_port": "PORT_A",
+			"key0_pin": "PIN_4",
 			"key0_mode": "GPIO_MODE_INPUT_PULL",
 			"key0_out": "GPIO_DOUT_HIGH",
 			"key0_driver": "GPIO_LEVEL_LOW"
@@ -114,8 +114,8 @@
 			"key4_driver": "GPIO_LEVEL_LOW"
 		  },
 		  {
-			"key5_port": "PORT_C",
-			"key5_pin": "PIN_1",
+			"key5_port": "PORT_A",
+			"key5_pin": "PIN_6",
 			"key5_mode": "GPIO_MODE_INPUT_PULL",
 			"key5_out": "GPIO_DOUT_HIGH",
 			"key5_driver": "GPIO_LEVEL_LOW"

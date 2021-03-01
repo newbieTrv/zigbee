@@ -1,77 +1,126 @@
 {
 	"fimwareInfo": {
-		"name": "sample_switch1",
+		"name": "switch_k6",
 		"description": "this is a project demo",
 		"version": "1.0.0",
 		"bv_version": "1.0",
 		"ic": "EFR32MG21A020F768",
 		"ota_image_type":"0x1602",
 		"manufacture_id":"0x1002",
-		"model_id":"TS0001",
-		"pid": "nPGIPl5D",
+		"model_id":"SM0006",
+		"pid": "qpf0vuwr",
 		"manufacture_name": "_TZ3000_",
 		"module_name":"ZS3L"
 	},
 	"uartConfig": {
 		"uart_enable": "true",
-		"uart_num": 2,
+		"uart_num": 1,
 		"uart": [
 		  {
 			"uart0_rx_port": "PORT_A",
-			"uart0_rx_pin": "PIN_1",
+			"uart0_rx_pin": "PIN_6",
 			"uart0_rx_loc": "LOC_0",
 			"uart0_tx_port": "PORT_A",
-			"uart0_tx_pin": "PIN_0",
+			"uart0_tx_pin": "PIN_5",
 			"uart0_tx_loc": "LOC_0",
 			"uart0_bandrate": 115200
-		  },
-		  {
-			"uart1_rx_port": "PORT_A",
-			"uart1_rx_pin": "PIN_2",
-			"uart1_rx_loc": "LOC_0",
-			"uart1_tx_port": "PORT_A",
-			"uart1_tx_pin": "PIN_3",
-			"uart1_tx_loc": "LOC_0",
-			"uart1_bandrate": 115200
 		  }
 		]
 	},
   "ioConfig": {
     "led_enable": "true",
-	"led_num": 3,
+	"led_num": 6,
 	"key_enable": "true",
-	"key_num": 1,
+	"key_num": 6,
     "led": [
 		  {
-			"led0_port": "PORT_B",
+		    "led0_port": "PORT_D",
 			"led0_pin": "PIN_1",
 			"led0_mode": "GPIO_MODE_OUTPUT_PP",
 			"led0_out": "GPIO_DOUT_HIGH",
 			"led0_driver": "GPIO_LEVEL_LOW"
 		  },
+			
 		  {
-			"led1_port": "PORT_D",
-			"led1_pin": "PIN_0",
+			"led1_port": "PORT_A",
+			"led1_pin": "PIN_6",
 			"led1_mode": "GPIO_MODE_OUTPUT_PP",
 			"led1_out": "GPIO_DOUT_HIGH",
 			"led1_driver": "GPIO_LEVEL_LOW"
 		  },
 		  {
-			"led2_port": "PORT_B",
-			"led2_pin": "PIN_0",
+			"led2_port": "PORT_A",
+			"led2_pin": "PIN_5",
 			"led2_mode": "GPIO_MODE_OUTPUT_PP",
 			"led2_out": "GPIO_DOUT_HIGH",
 			"led2_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"led3_port": "PORT_A",
+			"led3_pin": "PIN_4",
+			"led3_mode": "GPIO_MODE_OUTPUT_PP",
+			"led3_out": "GPIO_DOUT_HIGH",
+			"led3_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"led4_port": "PORT_C",
+			"led4_pin": "PIN_0",
+			"led4_mode": "GPIO_MODE_OUTPUT_PP",
+			"led4_out": "GPIO_DOUT_HIGH",
+			"led4_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"led5_port": "PORT_D",
+			"led5_pin": "PIN_0",
+			"led5_mode": "GPIO_MODE_OUTPUT_PP",
+			"led5_out": "GPIO_DOUT_HIGH",
+			"led5_driver": "GPIO_LEVEL_LOW"
 		  }
 	],
 	"key": [
-		  {
-			"key0_port": "PORT_A",
-			"key0_pin": "PIN_4",
+	      {
+			"key0_port": "PORT_C",
+			"key0_pin": "PIN_2",
 			"key0_mode": "GPIO_MODE_INPUT_PULL",
 			"key0_out": "GPIO_DOUT_HIGH",
 			"key0_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"key1_port": "PORT_B",
+			"key1_pin": "PIN_1",
+			"key1_mode": "GPIO_MODE_INPUT_PULL",
+			"key1_out": "GPIO_DOUT_HIGH",
+			"key1_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"key2_port": "PORT_B",
+			"key2_pin": "PIN_0",
+			"key2_mode": "GPIO_MODE_INPUT_PULL",
+			"key2_out": "GPIO_DOUT_HIGH",
+			"key2_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"key3_port": "PORT_A",
+			"key3_pin": "PIN_3",
+			"key3_mode": "GPIO_MODE_INPUT_PULL",
+			"key3_out": "GPIO_DOUT_HIGH",
+			"key3_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"key4_port": "PORT_A",
+			"key4_pin": "PIN_0",
+			"key4_mode": "GPIO_MODE_INPUT_PULL",
+			"key4_out": "GPIO_DOUT_HIGH",
+			"key4_driver": "GPIO_LEVEL_LOW"
+		  },
+		  {
+			"key5_port": "PORT_C",
+			"key5_pin": "PIN_1",
+			"key5_mode": "GPIO_MODE_INPUT_PULL",
+			"key5_out": "GPIO_DOUT_HIGH",
+			"key5_driver": "GPIO_LEVEL_LOW"
 		  }
+		  
 	]
   }
 }

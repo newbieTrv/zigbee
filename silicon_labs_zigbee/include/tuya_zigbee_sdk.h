@@ -56,6 +56,8 @@ extern "C" {
  * @remarks (OPTION) This is a debug macro define.You need to initialize the serial port before using it.
  */
 #define TUYA_DEBUG
+#define APP_DEBUG
+
 #ifdef APP_DEBUG
 #define app_print(...)     uart_printf(UART_ID_UART0, __VA_ARGS__)
 #define APP_PRINT(fmt,...) app_print("%s(%d)-<%s>: "##fmt"\r\n",__FILE__, __LINE__, __FUNCTION__,##__VA_ARGS__)

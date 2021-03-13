@@ -121,6 +121,8 @@ const cluster_t g_server_cluster_id[] =
 const dev_description_t g_dev_des[] =
 {
     { 1, ZHA_PROFILE_ID, ZG_DEVICE_ID_ON_OFF_LIGHT, SERVER_CLUSTER_LEN, (cluster_t *)&g_server_cluster_id[0], 0, NULL },
+    { 2, ZHA_PROFILE_ID, ZG_DEVICE_ID_ON_OFF_LIGHT, SERVER_CLUSTER_LEN, (cluster_t *)&g_server_cluster_id[0], 0, NULL },
+    { 3, ZHA_PROFILE_ID, ZG_DEVICE_ID_ON_OFF_LIGHT, SERVER_CLUSTER_LEN, (cluster_t *)&g_server_cluster_id[0], 0, NULL },
 };
 
 #define EP_SUMS sizeof(g_dev_des)/sizeof(g_dev_des[0])
@@ -138,7 +140,7 @@ static uint8_t g_relay_onoff_status[EP_SUMS + 1] = {0};
 static void __dev_report_onoff_msg(uint8_t ep, SEND_QOS_T qs);
 static void __dev_switch_op(uint8_t ep, DEV_IO_ST_T st);
 static void __dev_status_save(uint8_t ep);
-
+user_uart_config_t* mf_test_uart_config(void);
 /**
  * @description: load attributes, operation indicators and relays
  * @param {void} 
@@ -320,6 +322,12 @@ void dev_power_on_init(void)
 void dev_system_on_init(void)
 {
     __dev_status_load();
+
+
+	
+	  user_uart_config_t *default_config = mf_test_uart_config();
+	user_uart_init(default_config);
+	app_print("this is sw3 test");
 }
 
 /**
@@ -474,6 +482,11 @@ void dev_recovery_factory(DEV_RESET_TYPE_T type)
  */
 ZCL_CMD_RET_T dev_msg_recv_callback(dev_msg_t *dev_msg)
 {
+
+	app_print("----Recv_callback msg: cluster_id = %d, endpoint = %d-----\r\n",dev_msg->cluster,dev_msg->endpoint);
+
+	
+
     ZCL_CMD_RET_T result = ZCL_CMD_RET_SUCCESS;
     switch (dev_msg->cluster)
     {
@@ -489,10 +502,13 @@ ZCL_CMD_RET_T dev_msg_recv_callback(dev_msg_t *dev_msg)
             attr_value_t *attr_list = dev_msg->data.attr_data.attr_value;
             uint8_t attr_sums = dev_msg->data.attr_data.attr_value_sums;
             uint8_t i;
+			
             for(i = 0; i < attr_sums; i++)
             {
+              app_print("cmd=%d",attr_list[i].cmd);
                 switch(attr_list[i].cmd)
                 {
+                	
                     case CMD_OFF_COMMAND_ID:
                     {
                         __dev_switch_op(dev_msg->endpoint, DEV_IO_OFF);
@@ -606,6 +622,11 @@ user_uart_config_t* mf_test_uart_config(void)
     else if(MODULE_NAME == TYZS5)
     {
         user_uart_config_t default_config = TYZS5_USART_CONFIG_DEFAULT;
+        memcpy(&config, &default_config, sizeof(user_uart_config_t));
+    }
+	    else if(MODULE_NAME == ZS3L)
+    {
+        user_uart_config_t default_config = ZS3L_USART_CONFIG_DEFAULT;
         memcpy(&config, &default_config, sizeof(user_uart_config_t));
     }
     else

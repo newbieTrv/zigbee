@@ -13,8 +13,8 @@
 #define IC                              "EFR32MG21A020F768"
 #define OTA_IMAGE_TYPE                  0x1602
 #define MODULE_NAME                     ZS3L
-#define MODEL_ID                        "TS0001"
-#define PRODUCTOR_ID                    "nPGIPl5D"
+#define MODEL_ID                        "TS0003"
+#define PRODUCTOR_ID                    "hggwo2hy"
 
 
 /* uart config! */

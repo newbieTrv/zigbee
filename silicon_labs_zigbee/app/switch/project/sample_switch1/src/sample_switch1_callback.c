@@ -46,6 +46,36 @@
 #define         RELAY_1_DOUT                    LED2_OUT
 #define         RELAY_1_DRIVE                   LED2_DRIVER
 
+
+#define USER_UART0_CONFIG {\
+		UART_ID_UART0,\
+		UART_PIN_TYPE_CONFIG,\
+		{PORT_A, PIN_5},\
+		{PORT_A, PIN_6},\
+		LOC_0, \
+		LOC_0, \
+		115200,\
+		USART_PARITY_NONE,\
+		USART_STOPBITS_ONE,\
+		USART_DATABITS_8BIT,\
+		NULL\
+	}
+
+
+#define USER_UART1_CONFIG {\
+    UART_ID_UART1,\
+    UART_PIN_TYPE_CONFIG,\
+    {PORT_A, PIN_0},\
+    {PORT_A, PIN_3},\
+    LOC_0, \
+    LOC_0, \
+    115200,\
+    USART_PARITY_NONE,\
+    USART_STOPBITS_ONE,\
+    USART_DATABITS_8BIT,\
+    NULL\
+}
+
 /**
  * enumerate zigbee device work mode
  */
@@ -309,7 +339,25 @@ void dev_power_on_init(void)
     dev_zigbee_recovery_network_set(TRUE);//nwk recover open
     gpio_button_init((gpio_config_t *)gpio_input_config, get_array_len(gpio_input_config), 50, __dev_key_handle);
     gpio_output_init((gpio_config_t *)gpio_ouput_config, get_array_len(gpio_ouput_config));
+
+
+
+
+
+	
 }
+
+
+static void __uart0_rx_callback(uint8_t *data, uint16_t len)
+{
+ 
+}
+
+static void __uart1_rx_callback(uint8_t *data, uint16_t len)
+{
+  	uart_printf(UART_ID_UART0, "receive uart1 data:%s \r\n",data);
+}
+
 
 /**
  * @description: system start on, zigbee stack is inited completely and
@@ -324,10 +372,27 @@ void dev_system_on_init(void)
     __dev_status_load();
 
 
+	//uart0
+	user_uart_config_t config_0 = USER_UART0_CONFIG;
+	config_0.func = __uart0_rx_callback; 
+	user_uart_init( &config_0 );
+
 	
-	  user_uart_config_t *default_config = mf_test_uart_config();
-	user_uart_init(default_config);
-	app_print("this is sw3 test");
+
+	uart_printf(UART_ID_UART0, "this is uart0 \r\n");
+
+
+	//uart1
+#if 1
+	user_uart_config_t config_1 = USER_UART1_CONFIG;
+	config_1.func = __uart1_rx_callback; 
+	user_uart_init( &config_1 );
+	uart_printf(UART_ID_UART1, "this is uart1  test,but show in uart0,fun err \r\n");
+
+	uint8_t test_data[2] = {0x01, 0x02};
+    user_uart_send(UART_ID_UART1, test_data, sizeof(test_data)); // /< 串口发送
+
+#endif
 }
 
 /**

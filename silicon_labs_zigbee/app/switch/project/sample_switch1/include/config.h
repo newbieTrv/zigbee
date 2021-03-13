@@ -14,7 +14,7 @@
 #define OTA_IMAGE_TYPE                  0x1602
 #define MODULE_NAME                     ZS3L
 #define MODEL_ID                        "TS0003"
-#define PRODUCTOR_ID                    "hggwo2hy"
+#define PRODUCTOR_ID                    "8yah6nwz"
 
 
 /* uart config! */

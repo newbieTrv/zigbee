@@ -256,11 +256,6 @@ user_uart_config_t* mf_test_uart_config(void)
         user_uart_config_t default_config = TYZS5_USART_CONFIG_DEFAULT;
         memcpy(&config, &default_config, sizeof(user_uart_config_t));
     }
-    else if(MODULE_NAME == ZS3L)
-    {
-        user_uart_config_t default_config = ZS3L_USART_CONFIG_DEFAULT;
-        memcpy(&config, &default_config, sizeof(user_uart_config_t));
-    }
     else
     {
         user_uart_config_t default_config = TYZS3_USART_CONFIG_DEFAULT;
